@@ -1,11 +1,13 @@
 :root {
-  --primary-bg: #f9f9fb;
-  --primary-text: #2c3e50;
-  --accent-start: #74b9ff;
-  --accent-end: #a29bfe;
+  --primary-bg: #f1f5f3;
+  --primary-text: #1f2b29;
+  --accent-start: #15b88a;
+  --accent-end: #59d4a6;
   --card-bg: #ffffff;
-  --muted-text: #7f8c8d;
-  --shadow: rgba(0, 0, 0, 0.08);
+  --muted-text: #6f7f7a;
+  --shadow: rgba(20, 78, 58, 0.12);
+  --accent-strong: #118561;
+  --accent-soft: #e3f5ed;
 }
 
 * {
@@ -14,7 +16,7 @@
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--primary-bg);
   color: var(--primary-text);
   display: flex;
@@ -23,10 +25,10 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+  background: linear-gradient(120deg, var(--accent-start), var(--accent-end));
   color: white;
   padding: 1rem 2rem;
-  box-shadow: 0 6px 20px rgba(116, 185, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(21, 184, 138, 0.25);
 }
 
 .header-content {
@@ -67,17 +69,19 @@ nav a {
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.02em;
-  transition: opacity 0.2s ease;
-  padding-bottom: 0.2rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
 }
 
 nav a:hover,
 nav a:focus {
-  opacity: 0.8;
+  opacity: 0.88;
+  transform: translateY(-1px);
 }
 
 nav a.current {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.28);
 }
 
 main {
@@ -94,7 +98,7 @@ main {
 main h2 {
   text-align: center;
   margin-top: 0;
-  color: #34495e;
+  color: var(--accent-strong);
 }
 
 main p.lead {
@@ -124,7 +128,7 @@ main p.lead {
   gap: 0.85rem;
   background: var(--card-bg);
   border-radius: 16px;
-  box-shadow: 0 8px 22px var(--shadow);
+  box-shadow: 0 10px 28px var(--shadow);
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -134,20 +138,21 @@ main p.lead {
 .idea-card:hover,
 .idea-card:focus {
   transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(116, 185, 255, 0.35);
+  box-shadow: 0 16px 34px rgba(17, 133, 97, 0.25);
 }
 
 .idea-card img {
   width: 100%;
   height: 160px;
   object-fit: cover;
+  background: var(--accent-soft);
 }
 
 .idea-number {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  background: rgba(0, 0, 0, 0.55);
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent-start));
   color: white;
   width: 2.5rem;
   height: 2.5rem;
@@ -158,6 +163,41 @@ main p.lead {
   font-weight: 700;
   font-size: 1.1rem;
 }
+.lead strong,
+.idea-info strong {
+  color: var(--accent-strong);
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(120deg, var(--accent-strong), var(--accent-start));
+  box-shadow: 0 10px 20px rgba(17, 133, 97, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 26px rgba(17, 133, 97, 0.3);
+}
+
+.cta-button:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 4px;
+}
+
+footer {
+  color: var(--muted-text);
+}
+
 
 .idea-info {
   padding: 0 1.25rem 1.5rem;
@@ -166,7 +206,8 @@ main p.lead {
 .idea-info h3 {
   margin: 0 0 0.5rem;
   font-size: 1.1rem;
-  color: #2c3e50;
+  color: var(--primary-text);
+  font-weight: 600;
 }
 
 .idea-info p {
@@ -193,7 +234,7 @@ main p.lead {
 .idea-detail-text h3 {
   margin-top: 0;
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: var(--accent-strong);
 }
 
 .idea-detail-text p {
@@ -207,7 +248,7 @@ main p.lead {
 }
 
 .back-link a {
-  color: var(--accent-end);
+  color: var(--accent-strong);
   text-decoration: none;
   font-weight: 600;
 }
@@ -224,9 +265,10 @@ main p.lead {
   counter-reset: idea;
 }
 
+
 .ideas-list li {
   counter-increment: idea;
-  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent-start));
   color: white;
   padding: 1rem 1.25rem;
   border-radius: 12px;
@@ -234,21 +276,21 @@ main p.lead {
   display: flex;
   align-items: center;
   gap: 1rem;
-  box-shadow: 0 6px 15px rgba(116, 185, 255, 0.3);
+  box-shadow: 0 10px 24px rgba(17, 133, 97, 0.25);
 }
 
 .ideas-list li::before {
   content: counter(idea);
   font-weight: bold;
   font-size: 1.4rem;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.22);
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
 footer {
