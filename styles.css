@@ -104,6 +104,130 @@ main p.lead {
   line-height: 1.6;
 }
 
+
+.idea-gallery {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.idea-gallery li {
+  margin: 0;
+}
+
+.idea-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.1rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px var(--shadow);
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.idea-card:link,
+.idea-card:visited {
+  text-decoration: none;
+}
+
+.idea-card:hover,
+.idea-card:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(116, 185, 255, 0.3);
+}
+
+.idea-card img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.idea-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.idea-info {
+  padding: 0;
+  flex: 1;
+}
+
+.idea-info h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.idea-card:hover .idea-info h3,
+.idea-card:focus .idea-info h3 {
+  color: #1f3c5b;
+}
+
+.idea-info p {
+  margin: 0;
+  color: var(--muted-text);
+  line-height: 1.5;
+}
+
+.idea-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.idea-detail img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px var(--shadow);
+  object-fit: cover;
+}
+
+.idea-detail-text h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+.idea-detail-text p {
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+.back-link {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.back-link a {
+  color: var(--accent-end);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link a:hover,
+.back-link a:focus {
+  text-decoration: underline;
+}
+
 .ideas-list {
   list-style: none;
   margin: 0;
@@ -158,6 +282,25 @@ footer {
 
   main {
     margin: 1.5rem;
-    padding: 2rem;
+    padding: 1.75rem;
+  }
+
+  .idea-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .idea-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+  }
+
+  .idea-number {
+    margin-bottom: 0.5rem;
+  }
+
+  .idea-card img {
+    width: 100%;
+    height: 200px;
   }
 }
