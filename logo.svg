@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">Les idées de génies</title>
+  <desc id="desc">Ampoule stylisée évoquant l'inspiration</desc>
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#74b9ff" />
+      <stop offset="100%" stop-color="#a29bfe" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="55" fill="url(#glow)" opacity="0.2" />
+  <path d="M60 20c-14.36 0-26 11.64-26 26 0 9.78 5.4 18.3 13.4 22.7V80h25.2V68.7C80.6 64.3 86 55.78 86 46c0-14.36-11.64-26-26-26z" fill="url(#glow)" />
+  <rect x="48" y="80" width="24" height="8" rx="3" fill="#2c3e50" opacity="0.85" />
+  <rect x="50" y="90" width="20" height="6" rx="3" fill="#2c3e50" opacity="0.7" />
+  <path d="M52 50h4l4-10 4 20 4-10h4" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
