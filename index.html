@@ -3,94 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Idées de repas pour ce soir</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9fb;
-      color: #2c3e50;
-      margin: 0;
-      padding: 2rem;
-    }
-    main {
-      max-width: 700px;
-      margin: 0 auto;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      padding: 2rem 2.5rem;
-    }
-    h1 {
-      text-align: center;
-      color: #34495e;
-      margin-bottom: 1.5rem;
-    }
-    p {
-      text-align: center;
-      color: #7f8c8d;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-    ol {
-      counter-reset: repas;
-      list-style: none;
-      padding-left: 0;
-    }
-    li {
-      counter-increment: repas;
-      background: linear-gradient(135deg, #74b9ff, #a29bfe);
-      color: #ffffff;
-      padding: 1rem 1.25rem;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 6px 15px rgba(116, 185, 255, 0.3);
-    }
-    li::before {
-      content: counter(repas);
-      font-weight: bold;
-      font-size: 1.5rem;
-      background: rgba(255, 255, 255, 0.25);
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1rem;
-      box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.3);
-    }
-    li span {
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-    }
-    footer {
-      text-align: center;
-      margin-top: 2rem;
-      color: #95a5a6;
-      font-size: 0.9rem;
-    }
-  </style>
+  <title>Les idées de génies - Repas inspirants</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <div class="header-content">
+      <div class="branding">
+        <img src="logo.svg" alt="Logo Les idées de génies">
+        <h1>Les idées de génies</h1>
+      </div>
+      <nav aria-label="Navigation principale">
+        <ul>
+          <li><a class="current" href="index.html">Idées de repas</a></li>
+          <li><a href="voyages.html">Idées de voyages</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <h1>10 idées de repas pour ce soir</h1>
-    <p>Envie de varier les plaisirs ? Voici dix suggestions savoureuses et rapides à préparer pour votre dîner.</p>
-    <ol>
-      <li><span>Salade de quinoa aux légumes rôtis et feta</span></li>
-      <li><span>Pâtes fraîches à la crème de champignons et parmesan</span></li>
-      <li><span>Saumon grillé, asperges sautées et citron confit</span></li>
-      <li><span>Tacos de poulet mariné, salsa maison et avocat</span></li>
-      <li><span>Risotto aux courgettes, basilic et pignons de pin</span></li>
-      <li><span>Omelette aux herbes, fromage de chèvre et salade croquante</span></li>
-      <li><span>Curry de pois chiches, lait de coco et riz basmati</span></li>
-      <li><span>Bœuf sauté façon thaï, légumes croquants et nouilles de riz</span></li>
-      <li><span>Pizza maison tomate-mozzarella-roquette</span></li>
-      <li><span>Soupe miso aux champignons, tofu et nouilles soba</span></li>
+    <h2>10 idées de repas pour ce soir</h2>
+    <p class="lead">Envie de varier les plaisirs ? Voici dix suggestions savoureuses et rapides à préparer pour votre dîner.</p>
+    <ol class="ideas-list">
+      <li>Salade de quinoa aux légumes rôtis et feta</li>
+      <li>Pâtes fraîches à la crème de champignons et parmesan</li>
+      <li>Saumon grillé, asperges sautées et citron confit</li>
+      <li>Tacos de poulet mariné, salsa maison et avocat</li>
+      <li>Risotto aux courgettes, basilic et pignons de pin</li>
+      <li>Omelette aux herbes, fromage de chèvre et salade croquante</li>
+      <li>Curry de pois chiches, lait de coco et riz basmati</li>
+      <li>Bœuf sauté façon thaï, légumes croquants et nouilles de riz</li>
+      <li>Pizza maison tomate-mozzarella-roquette</li>
+      <li>Soupe miso aux champignons, tofu et nouilles soba</li>
     </ol>
-    <footer>Bon appétit !</footer>
   </main>
+
+  <footer>
+    &copy; 2024 Les idées de génies. Tous droits réservés.
+  </footer>
 </body>
 </html>
