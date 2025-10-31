@@ -21,9 +21,7 @@
 body {
   margin: 0;
   font-family: "Poppins", "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top left, rgba(89, 190, 71, 0.15), transparent 55%),
-    radial-gradient(circle at 80% 15%, rgba(245, 183, 38, 0.18), transparent 60%),
-    linear-gradient(160deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  background: #FFF;
   color: var(--primary-text);
   min-height: 100vh;
   position: relative;
