@@ -3,140 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Les idées de génies - Repas inspirants</title>
+  <title>TERACT - Solutions SAV</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <div class="branding">
-        <img src="logo.svg" alt="Logo Les idées de génies">
-        <h1>Les idées de génies</h1>
-      </div>
-      <nav aria-label="Navigation principale">
-        <ul>
-          <li><a class="current" href="index.html">Idées de repas</a></li>
-          <li><a href="voyages.html">Idées de voyages</a></li>
-          <li><a href="idees.html">Toutes les idées</a></li>
-        </ul>
-      </nav>
+  <div class="background-accent background-accent--one" aria-hidden="true"></div>
+  <div class="background-accent background-accent--two" aria-hidden="true"></div>
+  <header class="top-bar">
+    <div class="top-bar__actions">
+      <button class="ghost-button" type="button">Se connecter</button>
+      <button class="ghost-button ghost-button--pill" type="button">FR ▾</button>
     </div>
   </header>
-
-  <main>
-    <h2>10 idées de repas pour ce soir</h2>
-    <p class="lead">Envie de varier les plaisirs ? Voici dix suggestions savoureuses et rapides à préparer pour votre dîner.</p>
-    <ol class="idea-gallery">
-      <li>
-        <a class="idea-card" href="idees.html#idee-salade-quinoa">
-          <span class="idea-number" aria-hidden="true">1</span>
-          <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=400&q=80" alt="Salade de quinoa colorée avec des légumes rôtis et de la feta" loading="lazy">
-          <div class="idea-info">
-            <h3>Salade de quinoa aux légumes rôtis</h3>
-            <p>Une salade tiède pleine de couleurs, relevée par une feta crémeuse.</p>
+  <main class="main-layout">
+    <section class="hero" data-animate-on-load>
+      <div class="hero__intro" data-animate-on-load>
+        <h1 class="hero__title">
+          <span>Une panne ?</span>
+          <span>Un besoin de pièces détachées ... ?</span>
+        </h1>
+        <p class="hero__subtitle">Accédez ici à nos solutions SAV</p>
+        <div class="service-panel" data-animate-on-load>
+          <div class="service-panel__product">
+            <p class="service-panel__title">Par Produit</p>
+            <label class="search-field">
+              <span class="search-field__label">Saisissez l'EAN du produit</span>
+              <input class="search-field__input" type="text" inputmode="numeric" placeholder="">
+              <span class="search-field__hint" aria-hidden="true">Saisissez l'EAN du produit</span>
+            </label>
           </div>
-        </a>
-      </li>
-      <li>
-        <a class="idea-card" href="idees.html#idee-pates-champignons">
-          <span class="idea-number" aria-hidden="true">2</span>
-          <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=400&q=80" alt="Assiette de pâtes fraîches nappées d'une sauce aux champignons" loading="lazy">
-          <div class="idea-info">
-            <h3>Pâtes fraîches aux champignons</h3>
-            <p>Des tagliatelles maison avec une crème parfumée et du parmesan.</p>
+          <div class="service-panel__divider" role="separator" aria-label="OU">
+            <span>OU</span>
           </div>
-        </a>
-      </li>
-      <li>
-        <a class="idea-card" href="idees.html#idee-saumon-grille">
-          <span class="idea-number" aria-hidden="true">3</span>
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Saumon grillé servi avec des asperges vertes" loading="lazy">
-          <div class="idea-info">
-            <h3>Saumon grillé et asperges</h3>
-            <p>Un plat léger au citron confit qui met en valeur le poisson.</p>
+          <div class="service-panel__services">
+            <p class="service-panel__title">Par Service</p>
+            <div class="service-grid">
+              <article class="service-card service-card--repair" data-animate-on-load>
+                <h2>Réparer un produit</h2>
+                <button type="button">J'y vais</button>
+              </article>
+              <article class="service-card service-card--order" data-animate-on-load>
+                <h2>Commander une pièce détachée</h2>
+                <button type="button">J'y vais</button>
+              </article>
+              <article class="service-card service-card--defect" data-animate-on-load>
+                <h2>Déclarer un défectueux</h2>
+                <button type="button">J'y vais</button>
+              </article>
+            </div>
           </div>
-        </a>
-      </li>
-      <li>
-        <a class="idea-card" href="idees.html#idee-tacos-poulet">
-          <span class="idea-number" aria-hidden="true">4</span>
-          <img src="https://images.unsplash.com/photo-1608038509526-a8f784f1670f?auto=format&fit=crop&w=400&q=80" alt="Tacos garnis de poulet mariné, d'avocat et de salsa" loading="lazy">
-          <div class="idea-info">
-            <h3>Tacos de poulet mariné</h3>
-            <p>Une fiesta de saveurs avec salsa maison, avocat et coriandre.</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="idea-card" href="idees.html#idee-risotto-courgettes">
-          <span class="idea-number" aria-hidden="true">5</span>
-          <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=400&q=80" alt="Bol de risotto crémeux aux courgettes et basilic" loading="lazy">
-          <div class="idea-info">
-            <h3>Risotto courgettes &amp; basilic</h3>
-            <p>Crémosité garantie avec des pignons torréfiés pour le croquant.</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="idea-card" href="idees.html#idee-omelette-herbes">
-          <span class="idea-number" aria-hidden="true">6</span>
-          <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=400&q=80&sat=-50" alt="Omelette aux herbes servie avec une salade verte" loading="lazy">
-          <div class="idea-info">
-            <h3>Omelette aux herbes</h3>
-            <p>Rapide et raffinée avec chèvre frais et salade croquante.</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="idea-card" href="idees.html#idee-curry-pois-chiches">
-          <span class="idea-number" aria-hidden="true">7</span>
-          <img src="https://images.unsplash.com/photo-1589308078057-83234cf84e7b?auto=format&fit=crop&w=400&q=80" alt="Bol de curry de pois chiches au lait de coco" loading="lazy">
-          <div class="idea-info">
-            <h3>Curry de pois chiches</h3>
-            <p>Un plat réconfortant au lait de coco, servi avec du riz basmati.</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="idea-card" href="idees.html#idee-boeuf-thai">
-          <span class="idea-number" aria-hidden="true">8</span>
-          <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=400&q=80" alt="Sauté de bœuf à la thaïlandaise avec légumes" loading="lazy">
-          <div class="idea-info">
-            <h3>Bœuf sauté façon thaï</h3>
-            <p>Des légumes croquants et une sauce épicée pour voyager.</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="idea-card" href="idees.html#idee-pizza-maison">
-          <span class="idea-number" aria-hidden="true">9</span>
-          <img src="https://images.unsplash.com/photo-1548365328-8b849e6dc734?auto=format&fit=crop&w=400&q=80" alt="Pizza maison à la mozzarella et roquette" loading="lazy">
-          <div class="idea-info">
-            <h3>Pizza maison caprese</h3>
-            <p>Base tomate, mozzarella fondante et roquette poivrée.</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="idea-card" href="idees.html#idee-soupe-miso">
-          <span class="idea-number" aria-hidden="true">10</span>
-          <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=400&q=80" alt="Bol de soupe miso aux champignons et tofu" loading="lazy">
-          <div class="idea-info">
-            <h3>Soupe miso nourrissante</h3>
-            <p>Champignons, tofu et nouilles soba pour un bol plein d'umami.</p>
-          </div>
-        </a>
-      </li>
-    </ol>
+        </div>
+      </div>
+      <aside class="hero__visual" aria-hidden="true" data-animate-on-load>
+        <div class="photo-card">
+          <div class="photo-card__image"></div>
+        </div>
+      </aside>
+    </section>
   </main>
-
-  <footer>
-    &copy; 2024 Les idées de génies. Tous droits réservés.
+  <footer class="footer" data-animate-on-load>
+    <div class="footer__info" data-animate-on-load>
+      <div class="footer__help">
+        <h2>Besoin d'aide ?</h2>
+        <ul>
+          <li>Service client : 02 98 28 91 65</li>
+          <li>Email : contact_sav@teract.com</li>
+          <li>Horaires : Lundi – Vendredi 9h – 18h</li>
+        </ul>
+      </div>
+      <div class="footer__highlight">
+        <h2>Vos démarches en quelques clics</h2>
+        <p>Toutes vos notices et tutoriels vidéos sont disponibles dans votre espace magasin.</p>
+      </div>
+    </div>
+    <div class="footer__brand">TERACT</div>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
