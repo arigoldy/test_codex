@@ -1,0 +1,11 @@
+<svg width="220" height="80" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">InVivo</title>
+  <rect width="220" height="80" rx="18" fill="#f4fff8" />
+  <g fill="#2da66c" font-family="'Manrope', 'Segoe UI', sans-serif" font-weight="800" text-anchor="middle">
+    <text x="70" y="48" font-size="34">IN</text>
+    <text x="140" y="48" font-size="34">VIVO</text>
+  </g>
+  <text x="110" y="64" font-size="16" fill="#3a3a3a" font-family="'Manrope', 'Segoe UI', sans-serif" font-weight="600" text-anchor="middle">Nous on sème</text>
+  <path d="M40 24c6-10 18-18 30-18s24 6 30 18" stroke="#7ed957" stroke-width="6" stroke-linecap="round" fill="none" />
+  <path d="M160 22c6-10 18-16 28-16c10 0 22 6 28 16" stroke="#7ed957" stroke-width="6" stroke-linecap="round" fill="none" />
+</svg>
