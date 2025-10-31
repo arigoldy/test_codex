@@ -1,0 +1,9 @@
+<svg width="220" height="80" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Pure Family</title>
+  <rect width="220" height="80" rx="18" fill="#111" />
+  <g fill="#fff" font-family="'Manrope', 'Segoe UI', sans-serif" font-weight="800" text-anchor="middle">
+    <text x="60" y="50" font-size="34">PURE</text>
+    <text x="158" y="36" font-size="28" letter-spacing="0.18em">FAMILY</text>
+    <rect x="138" y="48" width="40" height="4" fill="#fff" opacity="0.6" />
+  </g>
+</svg>

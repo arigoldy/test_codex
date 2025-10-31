@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132" height="36" viewBox="0 0 132 36" role="img" aria-labelledby="title">
+  <title id="title">Logo Teract</title>
+  <defs>
+    <linearGradient id="teractGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5BBE47" />
+      <stop offset="100%" stop-color="#006B3F" />
+    </linearGradient>
+  </defs>
+  <rect width="132" height="36" rx="12" fill="url(#teractGradient)" opacity="0.1" />
+  <g fill="#00442C" font-family="Poppins, Arial, sans-serif" font-size="20" font-weight="700">
+    <text x="16" y="24">TERACT</text>
+  </g>
+  <circle cx="112" cy="12" r="4" fill="#FFD966" />
+  <circle cx="118" cy="22" r="3" fill="#5BBE47" />
+</svg>
