@@ -1,0 +1,10 @@
+<svg width="220" height="80" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">La Maison</title>
+  <rect width="220" height="80" rx="18" fill="#fff6e9" />
+  <circle cx="110" cy="40" r="34" fill="#f7a600" />
+  <circle cx="110" cy="40" r="26" fill="#fff" />
+  <path d="M94 42h32" stroke="#f7a600" stroke-width="10" stroke-linecap="round" />
+  <path d="M94 34h32" stroke="#f7a600" stroke-width="10" stroke-linecap="round" opacity="0.75" />
+  <path d="M94 48h32" stroke="#f7a600" stroke-width="10" stroke-linecap="round" opacity="0.6" />
+  <text x="110" y="72" font-size="18" fill="#d45d0f" font-family="'Manrope', 'Segoe UI', sans-serif" font-weight="700" text-anchor="middle">LA MAISON</text>
+</svg>
