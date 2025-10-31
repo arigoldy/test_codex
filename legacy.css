@@ -1,0 +1,344 @@
+:root {
+  --primary-bg: #f1f5f3;
+  --primary-text: #1f2b29;
+  --accent-start: #15b88a;
+  --accent-end: #59d4a6;
+  --card-bg: #ffffff;
+  --muted-text: #6f7f7a;
+  --shadow: rgba(20, 78, 58, 0.12);
+  --accent-strong: #118561;
+  --accent-soft: #e3f5ed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(120deg, var(--accent-start), var(--accent-end));
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 8px 24px rgba(21, 184, 138, 0.25);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.branding img {
+  width: 48px;
+  height: 48px;
+}
+
+.branding h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+nav a:hover,
+nav a:focus {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+nav a.current {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 2rem auto;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px var(--shadow);
+  padding: 2.5rem 3rem;
+}
+
+main h2 {
+  text-align: center;
+  margin-top: 0;
+  color: var(--accent-strong);
+}
+
+main p.lead {
+  text-align: center;
+  color: var(--muted-text);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.idea-gallery {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.idea-gallery li {
+  margin: 0;
+}
+
+.idea-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 10px 28px var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.idea-card:hover,
+.idea-card:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(17, 133, 97, 0.25);
+}
+
+.idea-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: var(--accent-soft);
+}
+
+.idea-number {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent-start));
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.lead strong,
+.idea-info strong {
+  color: var(--accent-strong);
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(120deg, var(--accent-strong), var(--accent-start));
+  box-shadow: 0 10px 20px rgba(17, 133, 97, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 26px rgba(17, 133, 97, 0.3);
+}
+
+.cta-button:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 4px;
+}
+
+.idea-info {
+  padding: 0 1.25rem 1.5rem;
+}
+
+.idea-info h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--primary-text);
+  font-weight: 600;
+}
+
+.idea-info p {
+  margin: 0;
+  color: var(--muted-text);
+  line-height: 1.5;
+}
+
+.idea-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.idea-detail img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px var(--shadow);
+  object-fit: cover;
+}
+
+.idea-detail-text h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: var(--accent-strong);
+}
+
+.idea-detail-text p {
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+.back-link {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.back-link a {
+  color: var(--accent-strong);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link a:hover,
+.back-link a:focus {
+  text-decoration: underline;
+}
+
+.ideas-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: idea;
+}
+
+.ideas-list-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.ideas-list-links li a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+  display: block;
+}
+
+.ideas-list-links li a:hover,
+.ideas-list-links li a:focus {
+  text-decoration: underline;
+}
+
+
+.ideas-list li {
+  counter-increment: idea;
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent-start));
+  color: white;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 10px 24px rgba(17, 133, 97, 0.25);
+}
+
+.ideas-list-links li {
+  margin: 0;
+}
+
+.ideas-list li::before {
+  content: counter(idea);
+  font-weight: bold;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.22);
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem 2rem;
+  color: var(--muted-text);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+
+  main {
+    margin: 1.5rem;
+    padding: 2rem;
+  }
+
+  .idea-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .idea-card img {
+    height: 180px;
+  }
+}
