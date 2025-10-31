@@ -1,0 +1,86 @@
+<svg width="900" height="700" viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Collaborateurs d'un centre de relation client</title>
+  <desc id="desc">Illustration moderne représentant des conseillers clientèle portant des casques-micro, assis devant leurs ordinateurs.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f8ff" />
+      <stop offset="100%" stop-color="#e9f5ff" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff8a8a" />
+      <stop offset="100%" stop-color="#ffd1a1" />
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7bc5ff" />
+      <stop offset="100%" stop-color="#4d7bff" />
+    </linearGradient>
+    <linearGradient id="accent3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6ad8ab" />
+      <stop offset="100%" stop-color="#2cbf85" />
+    </linearGradient>
+    <clipPath id="frame">
+      <path d="M0 0h900v700H180a180 180 0 0 1-180-180V0Z" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="900" height="700" fill="url(#bg)" />
+    <circle cx="720" cy="60" r="220" fill="#fff4f3" opacity="0.7" />
+    <circle cx="120" cy="520" r="220" fill="#e0f6f0" opacity="0.8" />
+    <g transform="translate(80 110)">
+      <rect x="0" y="280" width="320" height="220" rx="32" fill="#ffffff" opacity="0.85" />
+      <rect x="30" y="310" width="260" height="18" rx="9" fill="#dfe8ff" />
+      <rect x="30" y="340" width="220" height="18" rx="9" fill="#dfe8ff" opacity="0.7" />
+      <rect x="30" y="370" width="180" height="18" rx="9" fill="#dfe8ff" opacity="0.55" />
+      <rect x="120" y="0" width="180" height="240" rx="24" fill="#ffffff" opacity="0.9" />
+      <path d="M180 64a58 58 0 1 1 116 0a58 58 0 1 1-116 0" fill="#ffd9b0" />
+      <path d="M242 140c-18 26-66 26-84 0c-22 32-12 100 42 116c54-16 64-84 42-116Z" fill="#ffefef" />
+      <path d="M178 86c6 28 36 48 66 42c26-4 46-26 50-52c-14 10-32 14-48 12c-18-2-46-12-68-2Z" fill="#4d7bff" />
+      <rect x="168" y="176" width="132" height="124" rx="26" fill="#4d7bff" />
+      <path d="M152 230c-28 0-52 22-52 50s24 50 52 50" stroke="#2b3f57" stroke-width="14" stroke-linecap="round" fill="none" />
+      <circle cx="144" cy="228" r="16" fill="#2b3f57" />
+      <path d="M300 230c28 0 52 22 52 50s-24 50-52 50" stroke="#2b3f57" stroke-width="14" stroke-linecap="round" fill="none" />
+      <circle cx="308" cy="228" r="16" fill="#2b3f57" />
+      <path d="M188 250h92" stroke="#fff" stroke-width="12" stroke-linecap="round" />
+      <circle cx="240" cy="28" r="18" fill="#2b3f57" />
+      <rect x="214" y="16" width="52" height="24" rx="12" fill="#2b3f57" />
+      <path d="M116 44c0-40 36-76 84-76c38 0 76 22 90 62" stroke="#2b3f57" stroke-width="18" stroke-linecap="round" fill="none" opacity="0.3" />
+    </g>
+    <g transform="translate(360 120)">
+      <rect x="0" y="260" width="420" height="260" rx="40" fill="#ffffff" opacity="0.78" />
+      <rect x="40" y="300" width="340" height="22" rx="11" fill="#dfe8ff" />
+      <rect x="40" y="336" width="280" height="22" rx="11" fill="#dfe8ff" opacity="0.75" />
+      <rect x="40" y="372" width="230" height="22" rx="11" fill="#dfe8ff" opacity="0.55" />
+      <rect x="150" y="0" width="220" height="280" rx="28" fill="#ffffff" opacity="0.92" />
+      <circle cx="260" cy="90" r="74" fill="#ffd9b0" />
+      <path d="M224 58c10 24 42 38 78 28c22-6 40-22 46-42c-12 12-32 20-50 18c-22-2-52-12-74-4Z" fill="#ff8f6d" />
+      <path d="M308 176c-22 32-88 32-110 0c-24 36-10 124 54 144c64-20 78-108 56-144Z" fill="url(#accent)" />
+      <rect x="208" y="210" width="108" height="134" rx="28" fill="#2b3f57" />
+      <rect x="192" y="134" width="144" height="40" rx="20" fill="#2b3f57" />
+      <path d="M190 248c-34 0-62 26-62 58c0 32 28 58 62 58" stroke="#2b3f57" stroke-width="16" stroke-linecap="round" fill="none" />
+      <circle cx="184" cy="246" r="18" fill="#2b3f57" />
+      <path d="M330 248c34 0 62 26 62 58c0 32-28 58-62 58" stroke="#2b3f57" stroke-width="16" stroke-linecap="round" fill="none" />
+      <circle cx="336" cy="246" r="18" fill="#2b3f57" />
+      <path d="M238 276h82" stroke="#fff" stroke-width="14" stroke-linecap="round" />
+      <path d="M212 90c0-42 38-76 84-76c32 0 62 18 76 48" stroke="#2b3f57" stroke-width="20" stroke-linecap="round" fill="none" opacity="0.35" />
+      <circle cx="334" cy="102" r="12" fill="#2b3f57" />
+      <path d="M344 102h32" stroke="#2b3f57" stroke-width="12" stroke-linecap="round" />
+    </g>
+    <g transform="translate(620 220)">
+      <rect x="30" y="220" width="230" height="168" rx="32" fill="#ffffff" opacity="0.75" />
+      <rect x="52" y="248" width="170" height="18" rx="9" fill="#dfe8ff" />
+      <rect x="52" y="276" width="150" height="18" rx="9" fill="#dfe8ff" opacity="0.7" />
+      <rect x="52" y="304" width="110" height="18" rx="9" fill="#dfe8ff" opacity="0.5" />
+      <rect x="64" y="0" width="150" height="200" rx="22" fill="#ffffff" opacity="0.9" />
+      <circle cx="140" cy="60" r="52" fill="#ffd9b0" />
+      <path d="M112 40c8 20 34 34 62 28c18-4 36-16 42-34c-12 12-30 18-46 16c-18-2-40-10-58-10Z" fill="#7bc5ff" />
+      <path d="M188 132c-16 24-60 24-76 0c-18 28-6 92 38 104c44-12 56-76 38-104Z" fill="url(#accent3)" />
+      <rect x="104" y="156" width="72" height="96" rx="20" fill="#2b3f57" />
+      <rect x="88" y="112" width="104" height="32" rx="16" fill="#2b3f57" />
+      <circle cx="96" cy="150" r="14" fill="#2b3f57" />
+      <path d="M90 150c-24 0-44 18-44 42s20 42 44 42" stroke="#2b3f57" stroke-width="12" stroke-linecap="round" fill="none" />
+      <path d="M190 150c24 0 44 18 44 42s-20 42-44 42" stroke="#2b3f57" stroke-width="12" stroke-linecap="round" fill="none" />
+      <circle cx="196" cy="150" r="14" fill="#2b3f57" />
+      <path d="M118 176h44" stroke="#fff" stroke-width="10" stroke-linecap="round" />
+    </g>
+  </g>
+</svg>
