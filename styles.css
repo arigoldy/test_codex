@@ -63,15 +63,35 @@ body {
 }
 
 .top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(12, 22, 16, 0.12);
+}
+
+.top-bar__inner {
   display: flex;
-  justify-content: flex-end;
-  padding: clamp(1rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 4rem) 0;
-  position: relative;
-  z-index: 2;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(0.9rem, 2vw, 1.4rem) clamp(1.5rem, 4vw, 3rem);
+  gap: 1.5rem;
+}
+
+.top-bar__brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.top-bar__brand img {
+  display: block;
+  height: clamp(32px, 5vw, 42px);
+  width: auto;
 }
 
 .top-bar__actions {
   display: flex;
+  align-items: center;
   gap: 0.75rem;
 }
 
@@ -86,7 +106,7 @@ body {
   letter-spacing: 0.01em;
   box-shadow: 0 10px 25px rgba(28, 63, 42, 0.08);
   cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
 }
 
 .ghost-button:hover,
@@ -559,8 +579,16 @@ body {
 }
 
 @media (max-width: 640px) {
-  .top-bar {
-    justify-content: center;
+  .top-bar__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding-inline: clamp(1rem, 6vw, 2rem);
+  }
+
+  .top-bar__actions {
+    justify-content: space-between;
+    width: 100%;
   }
 
   .hero__title {
