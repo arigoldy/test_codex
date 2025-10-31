@@ -7,6 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,7 +24,7 @@
       <button class="ghost-button ghost-button--pill" type="button">FR ▾</button>
     </div>
   </header>
-  <main class="main-layout">
+  <main class="main-layout container">
     <section class="hero" data-animate-on-load>
       <div class="hero__intro" data-animate-on-load>
         <h1 class="hero__title">
@@ -29,11 +35,17 @@
         <div class="service-panel" data-animate-on-load>
           <div class="service-panel__product">
             <p class="service-panel__title">Par Produit</p>
-            <label class="search-field">
-              <span class="search-field__label">Saisissez l'EAN du produit</span>
-              <input class="search-field__input" type="text" inputmode="numeric" maxlength="13" placeholder="0000000000000">
-              <span class="search-field__hint" aria-hidden="true">Saisissez l'EAN du produit</span>
-            </label>
+            <div class="service-panel__input-group">
+              <label class="service-panel__label form-label" for="product-ean">Saisissez l'EAN du produit</label>
+              <input
+                id="product-ean"
+                class="search-field__input form-control"
+                type="text"
+                inputmode="numeric"
+                maxlength="13"
+                placeholder="Saisissez l'EAN du produit"
+              >
+            </div>
             <div class="product-preview" aria-live="polite" hidden>
               <div class="product-preview__card">
                 <div class="product-preview__thumbnail" aria-hidden="true">
