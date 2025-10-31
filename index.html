@@ -31,9 +31,21 @@
             <p class="service-panel__title">Par Produit</p>
             <label class="search-field">
               <span class="search-field__label">Saisissez l'EAN du produit</span>
-              <input class="search-field__input" type="text" inputmode="numeric" placeholder="">
+              <input class="search-field__input" type="text" inputmode="numeric" maxlength="13" placeholder="0000000000000">
               <span class="search-field__hint" aria-hidden="true">Saisissez l'EAN du produit</span>
             </label>
+            <div class="product-preview" aria-live="polite" hidden>
+              <div class="product-preview__card">
+                <div class="product-preview__thumbnail" aria-hidden="true">
+                  <img src="" alt="" loading="lazy">
+                </div>
+                <div class="product-preview__details">
+                  <p class="product-preview__name"></p>
+                  <p class="product-preview__category"></p>
+                  <p class="product-preview__ean"></p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="service-panel__divider" role="separator" aria-label="OU">
             <span>OU</span>
