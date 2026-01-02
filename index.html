@@ -3,138 +3,342 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TERACT - Solutions SAV</title>
+  <title>Contrats SAV - Application de gestion</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="top-bar">
-    <div class="top-bar__inner container">
-      <a class="top-bar__brand" href="#" aria-label="Accueil Teract">
-        <img src="assets/logo-teract.svg" alt="Teract">
-      </a>
-      <div class="top-bar__actions">
-        <button class="ghost-button" type="button">Se connecter</button>
-        <button class="ghost-button ghost-button--pill" type="button">FR ▾</button>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <span class="sidebar__logo">SAV</span>
+        <div>
+          <p class="sidebar__title">Contrats de service</p>
+          <p class="sidebar__subtitle">Module back-office</p>
+        </div>
       </div>
-    </div>
-  </header>
-  <main class="main-layout container">
-    <section class="hero" data-animate-on-load>
-      <div class="hero__intro" data-animate-on-load>
-        <h1 class="hero__title">
-          <span>Une panne ?</span>
-          <span>Un besoin de pièces détachées ... ?</span>
-        </h1>
-        <p class="hero__subtitle">Accédez ici à nos solutions SAV</p>
-        <div class="service-panel" data-animate-on-load>
-          <div class="service-panel__product">
-            <p class="service-panel__title">Par Produit</p>
-            <div class="service-panel__input-group">
-              <label class="service-panel__label form-label" for="product-ean">Saisissez l'EAN du produit</label>
-              <input
-                id="product-ean"
-                class="search-field__input form-control"
-                type="text"
-                inputmode="numeric"
-                maxlength="13"
-                placeholder="Saisissez l'EAN du produit"
-              >
+      <nav class="sidebar__nav">
+        <a href="#overview" class="nav-link is-active">Vue d’ensemble</a>
+        <a href="#data-model" class="nav-link">Modèle de données</a>
+        <a href="#rules" class="nav-link">Règles SAV</a>
+        <a href="#workflow" class="nav-link">Workflows</a>
+        <a href="#decision" class="nav-link">Décision couverture</a>
+        <a href="#api" class="nav-link">API &amp; endpoints</a>
+        <a href="#demo" class="nav-link">Démo &amp; seed</a>
+      </nav>
+      <div class="sidebar__footer">
+        <p>Version 1 - base fonctionnelle</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="page-header" id="overview">
+        <div>
+          <p class="eyebrow">Cahier des charges fonctionnel</p>
+          <h1>Gestion des contrats de service SAV</h1>
+          <p class="subtitle">
+            Application interne pour créer des contrats SAV, structurer les appendix et piloter les règles de
+            couverture par produit.
+          </p>
+        </div>
+        <div class="status-card">
+          <h2>Objectifs clés</h2>
+          <ul>
+            <li>Créer et gérer des contrats SAV avec les clients industriels.</li>
+            <li>Configurer les règles de garantie par produit.</li>
+            <li>Exposer les règles au front-office (API-first).</li>
+          </ul>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2>Contexte métier</h2>
+        <p>
+          Les contrats SAV couvrent des clients industriels asiatiques opérant sur les marchés du jardinage et du
+          bricolage. Les produits sont fabriqués par les usines clientes, vendus en Europe et pris en charge par
+          notre société dans une logique assurantielle.
+        </p>
+        <div class="grid grid--three">
+          <article class="card">
+            <h3>Contrats</h3>
+            <p>Accord global, règles financières et durée de validité.</p>
+          </article>
+          <article class="card">
+            <h3>Appendix</h3>
+            <p>Lots de produits homogènes rattachés à un contrat.</p>
+          </article>
+          <article class="card">
+            <h3>Lignes</h3>
+            <p>Produit spécifique avec règles de garantie et options SAV.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="data-model">
+        <div class="section__header">
+          <h2>Modèle de données</h2>
+          <p>Vue synthétique des entités principales et de leurs champs clés.</p>
+        </div>
+        <div class="grid grid--three">
+          <article class="card">
+            <h3>Contrat</h3>
+            <ul>
+              <li>client_id, reference (unique par client)</li>
+              <li>status : draft | active | suspended | expired | archived</li>
+              <li>start_date, end_date</li>
+              <li>billing_rate_percent, billing_base</li>
+              <li>currency, notes</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Appendix</h3>
+            <ul>
+              <li>contract_id, name, code</li>
+              <li>status : draft | active | archived</li>
+              <li>start_date, end_date</li>
+              <li>description</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Ligne de contrat</h3>
+            <ul>
+              <li>appendix_id, product_id</li>
+              <li>status : draft | active | deprecated</li>
+              <li>warranty_start_rule, warranty_months</li>
+              <li>options garantie &amp; hors garantie</li>
+            </ul>
+          </article>
+        </div>
+        <div class="constraints">
+          <h3>Contraintes</h3>
+          <ul>
+            <li>Dates cohérentes : line ⩽ appendix ⩽ contrat.</li>
+            <li>Une ligne appartient à un seul appendix.</li>
+            <li>Activation contrat interdite sans ligne active.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="rules">
+        <div class="section__header">
+          <h2>Règles de prise en charge SAV</h2>
+          <p>Les options sont configurées par contrat, appendix et produit.</p>
+        </div>
+        <div class="grid grid--two">
+          <article class="card">
+            <h3>Prise en charge garantie</h3>
+            <ul>
+              <li>Réparation en station agréée</li>
+              <li>Envoi de pièces détachées</li>
+              <li>Remboursement</li>
+              <li>Remplacement produit</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Hors garantie</h3>
+            <ul>
+              <li>Réparation payante</li>
+              <li>Vente de pièces détachées</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="workflow">
+        <div class="section__header">
+          <h2>Workflows &amp; statuts</h2>
+          <p>Règles d’édition et transitions applicables en démonstration.</p>
+        </div>
+        <div class="grid grid--three">
+          <article class="card">
+            <h3>Contrat</h3>
+            <ul>
+              <li>draft → active (si appendix &amp; lignes actives)</li>
+              <li>active → suspended → active</li>
+              <li>active → expired → archived</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Appendix</h3>
+            <ul>
+              <li>draft → active</li>
+              <li>active → archived (sans ligne active)</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Lignes</h3>
+            <ul>
+              <li>draft → active</li>
+              <li>active → deprecated</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="decision">
+        <div class="section__header">
+          <h2>Moteur de décision - couverture SAV</h2>
+          <p>Simulateur basé sur les règles de l’annexe A.5.</p>
+        </div>
+        <div class="decision">
+          <form class="decision__form" id="decision-form">
+            <div class="field">
+              <label for="scope">Périmètre</label>
+              <select id="scope" name="scope">
+                <option value="contract">Recherche par contrat</option>
+                <option value="appendix">Recherche par appendix</option>
+              </select>
             </div>
-            <div class="product-preview" aria-live="polite" hidden>
-              <div class="product-preview__card">
-                <div class="product-preview__thumbnail" aria-hidden="true">
-                  <img src="" alt="" loading="lazy">
-                </div>
-                <div class="product-preview__details">
-                  <p class="product-preview__name"></p>
-                  <p class="product-preview__category"></p>
-                  <p class="product-preview__ean"></p>
-                </div>
+            <div class="field">
+              <label for="contract">Contrat</label>
+              <select id="contract" name="contract"></select>
+            </div>
+            <div class="field">
+              <label for="appendix">Appendix</label>
+              <select id="appendix" name="appendix"></select>
+            </div>
+            <div class="field">
+              <label for="product">Produit</label>
+              <select id="product" name="product"></select>
+            </div>
+            <div class="field">
+              <label for="event-date">Date de demande SAV</label>
+              <input type="date" id="event-date" name="event-date" required>
+            </div>
+            <div class="field">
+              <label for="serial">Numéro de série</label>
+              <input type="text" id="serial" name="serial" placeholder="Ex: SAV-2024-001">
+            </div>
+            <div class="field">
+              <label for="purchase-date">Date d'achat</label>
+              <input type="date" id="purchase-date" name="purchase-date">
+            </div>
+            <div class="field">
+              <label for="activation-date">Date d'activation</label>
+              <input type="date" id="activation-date" name="activation-date">
+            </div>
+            <div class="field">
+              <label for="manufacture-date">Date de fabrication</label>
+              <input type="date" id="manufacture-date" name="manufacture-date">
+            </div>
+            <div class="field">
+              <label for="proof">Preuve d'achat fournie</label>
+              <select id="proof" name="proof">
+                <option value="">Non renseigné</option>
+                <option value="true">Oui</option>
+                <option value="false">Non</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="country">Pays de vente</label>
+              <input type="text" id="country" name="country" placeholder="Ex: FR">
+            </div>
+            <div class="field">
+              <label for="channel">Canal de distribution</label>
+              <input type="text" id="channel" name="channel" placeholder="Ex: retail">
+            </div>
+            <button type="submit" class="primary-button">Évaluer la couverture</button>
+          </form>
+          <div class="decision__output">
+            <h3>Résultat</h3>
+            <div class="output__grid">
+              <div>
+                <p class="output__label">Éligibilité</p>
+                <p class="output__value" id="output-eligible">-</p>
+              </div>
+              <div>
+                <p class="output__label">Sous garantie</p>
+                <p class="output__value" id="output-warranty">-</p>
+              </div>
+              <div>
+                <p class="output__label">Fin de garantie</p>
+                <p class="output__value" id="output-warranty-end">-</p>
               </div>
             </div>
-          </div>
-          <div class="service-panel__divider" role="separator" aria-label="OU">
-            <span>OU</span>
-          </div>
-          <div class="service-panel__services">
-            <p class="service-panel__title">Par Service</p>
-            <div class="service-grid">
-              <article class="service-card service-card--repair" data-animate-on-load>
-                <h2>Réparer un produit</h2>
-                <button type="button">J'y vais</button>
-              </article>
-              <article class="service-card service-card--order" data-animate-on-load>
-                <h2>Commander une pièce détachée</h2>
-                <button type="button">J'y vais</button>
-              </article>
-              <article class="service-card service-card--defect" data-animate-on-load>
-                <h2>Déclarer un défectueux</h2>
-                <button type="button">J'y vais</button>
-              </article>
+            <div class="output__section">
+              <p class="output__label">Inputs requis</p>
+              <div class="tag-list" id="output-required"></div>
+            </div>
+            <div class="output__section">
+              <p class="output__label">Options SAV autorisées</p>
+              <div class="tag-list" id="output-options"></div>
+            </div>
+            <div class="output__section">
+              <p class="output__label">Reason codes</p>
+              <div class="tag-list" id="output-reasons"></div>
             </div>
           </div>
         </div>
-      </div>
-      <aside class="hero__visual" aria-hidden="true" data-animate-on-load>
-        <div class="photo-card">
-          <img
-            class="photo-card__image"
-            src="assets/images/hero-contact-center.svg"
-            alt="Collaboratrice souriante d'un centre de relation client au téléphone"
-            loading="lazy"
-          >
+      </section>
+
+      <section class="section" id="api">
+        <div class="section__header">
+          <h2>API Back (CRUD) - démo</h2>
+          <p>Endpoints clés exposés par le module Contrats / Appendix / Lignes.</p>
         </div>
-      </aside>
-    </section>
-    <section class="brand-slider" aria-label="Marques partenaires" data-animate-on-load>
-      <div class="brand-slider__track">
-        <article class="brand-slider__item" aria-label="Pure Family">
-          <img src="assets/brands/pure-family.svg" alt="Logo Pure Family" loading="lazy">
-        </article>
-        <article class="brand-slider__item" aria-label="Ecloz">
-          <img src="assets/brands/ecloz.svg" alt="Logo Ecloz" loading="lazy">
-        </article>
-        <article class="brand-slider__item" aria-label="InVivo">
-          <img src="assets/brands/invivo.svg" alt="Logo InVivo" loading="lazy">
-        </article>
-        <article class="brand-slider__item" aria-label="La Maison">
-          <img src="assets/brands/la-maison.svg" alt="Logo La Maison" loading="lazy">
-        </article>
-        <article class="brand-slider__item" aria-label="No Name">
-          <img src="assets/brands/no-name.svg" alt="Logo No Name" loading="lazy">
-        </article>
-      </div>
-    </section>
-  </main>
-  <footer class="footer" data-animate-on-load>
-    <div class="footer__info" data-animate-on-load>
-      <div class="footer__help">
-        <h2>Besoin d'aide ?</h2>
-        <ul>
-          <li>Service client : 02 98 28 91 65</li>
-          <li>Email : contact_sav@teract.com</li>
-          <li>Horaires : Lundi – Vendredi 9h – 18h</li>
-        </ul>
-      </div>
-      <div class="footer__highlight">
-        <h2>Vos démarches en quelques clics</h2>
-        <p>Toutes vos notices et tutoriels vidéos sont disponibles dans votre espace magasin.</p>
-      </div>
-    </div>
-    <div class="footer__brand">TERACT</div>
-  </footer>
+        <div class="grid grid--two">
+          <article class="card">
+            <h3>Contrats</h3>
+            <ul>
+              <li>POST /contracts</li>
+              <li>GET /contracts</li>
+              <li>GET /contracts/{id}</li>
+              <li>PATCH /contracts/{id}</li>
+              <li>POST /contracts/{id}/activate</li>
+              <li>POST /contracts/{id}/suspend</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Appendix &amp; lignes</h3>
+            <ul>
+              <li>POST /contracts/{id}/appendices</li>
+              <li>GET /appendices/{id}</li>
+              <li>POST /appendices/{id}/lines</li>
+              <li>GET /appendices/{id}/lines</li>
+              <li>POST /contract-lines/{id}/activate</li>
+              <li>POST /contract-lines/{id}/deprecate</li>
+            </ul>
+          </article>
+        </div>
+        <div class="card highlight">
+          <h3>Endpoint décision</h3>
+          <code>POST /decisions/coverage</code>
+          <p>Retourne eligible, in_warranty, allowed_resolutions et reason_codes.</p>
+        </div>
+      </section>
+
+      <section class="section" id="demo">
+        <div class="section__header">
+          <h2>Démo &amp; données de seed</h2>
+          <p>Exemples d’appels et critères d’acceptation pour la démonstration.</p>
+        </div>
+        <div class="grid grid--two">
+          <article class="card">
+            <h3>Script de démo</h3>
+            <ol>
+              <li>Créer un contrat (client existant).</li>
+              <li>Créer 1 appendix.</li>
+              <li>Ajouter 3 lignes.</li>
+              <li>Activer appendix puis contrat.</li>
+              <li>Tester 5 cas de /decisions/coverage.</li>
+            </ol>
+          </article>
+          <article class="card">
+            <h3>Critères d’acceptation</h3>
+            <ul>
+              <li>Validation du product_id à la création d’une ligne.</li>
+              <li>Activation contrat impossible sans ligne active.</li>
+              <li>Reason codes cohérents et reproductibles.</li>
+              <li>Contraintes de validité appliquées partout.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
