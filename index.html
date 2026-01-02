@@ -24,6 +24,7 @@
         <a href="#data-model" class="nav-link">Modèle de données</a>
         <a href="#rules" class="nav-link">Règles SAV</a>
         <a href="#workflow" class="nav-link">Workflows</a>
+        <a href="#management" class="nav-link">Gestion</a>
         <a href="#decision" class="nav-link">Décision couverture</a>
         <a href="#api" class="nav-link">API &amp; endpoints</a>
         <a href="#demo" class="nav-link">Démo &amp; seed</a>
@@ -173,6 +174,188 @@
               <li>draft → active</li>
               <li>active → deprecated</li>
             </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="management">
+        <div class="section__header">
+          <h2>Gestion opérationnelle</h2>
+          <p>Création rapide des contrats, appendix et lignes de contrat pour la démo.</p>
+        </div>
+        <div class="grid grid--three">
+          <article class="card card--panel">
+            <h3>Contrats</h3>
+            <div class="table" id="contracts-table"></div>
+            <form class="inline-form" id="contract-form">
+              <div class="field">
+                <label for="contract-client">Client</label>
+                <input type="text" id="contract-client" name="contract-client" placeholder="CL-ASI-03" required>
+              </div>
+              <div class="field">
+                <label for="contract-reference">Référence</label>
+                <input type="text" id="contract-reference" name="contract-reference" placeholder="SAV-2026" required>
+              </div>
+              <div class="field">
+                <label for="contract-status">Statut</label>
+                <select id="contract-status" name="contract-status">
+                  <option value="draft">draft</option>
+                  <option value="active">active</option>
+                  <option value="suspended">suspended</option>
+                  <option value="expired">expired</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="contract-start">Date début</label>
+                <input type="date" id="contract-start" name="contract-start" required>
+              </div>
+              <div class="field">
+                <label for="contract-end">Date fin</label>
+                <input type="date" id="contract-end" name="contract-end" required>
+              </div>
+              <div class="field">
+                <label for="contract-rate">Taux facturation (%)</label>
+                <input type="number" step="0.1" id="contract-rate" name="contract-rate" value="5.0" required>
+              </div>
+              <div class="field">
+                <label for="contract-billing">Base de facturation</label>
+                <select id="contract-billing" name="contract-billing">
+                  <option value="purchase_cost">purchase_cost</option>
+                  <option value="retail_price">retail_price</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="contract-currency">Devise</label>
+                <input type="text" id="contract-currency" name="contract-currency" value="EUR">
+              </div>
+              <div class="field">
+                <label for="contract-notes">Notes</label>
+                <input type="text" id="contract-notes" name="contract-notes" placeholder="Commentaire interne">
+              </div>
+              <button type="submit" class="primary-button">Ajouter contrat</button>
+              <p class="form-message" id="contract-message" role="status"></p>
+            </form>
+          </article>
+          <article class="card card--panel">
+            <h3>Appendix</h3>
+            <div class="table" id="appendices-table"></div>
+            <form class="inline-form" id="appendix-form">
+              <div class="field">
+                <label for="appendix-contract">Contrat</label>
+                <select id="appendix-contract" name="appendix-contract"></select>
+              </div>
+              <div class="field">
+                <label for="appendix-name">Nom</label>
+                <input type="text" id="appendix-name" name="appendix-name" placeholder="Gamme Jardin 2026" required>
+              </div>
+              <div class="field">
+                <label for="appendix-code">Code</label>
+                <input type="text" id="appendix-code" name="appendix-code" placeholder="GJ-2026" required>
+              </div>
+              <div class="field">
+                <label for="appendix-status">Statut</label>
+                <select id="appendix-status" name="appendix-status">
+                  <option value="draft">draft</option>
+                  <option value="active">active</option>
+                  <option value="archived">archived</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="appendix-start">Date début</label>
+                <input type="date" id="appendix-start" name="appendix-start" required>
+              </div>
+              <div class="field">
+                <label for="appendix-end">Date fin</label>
+                <input type="date" id="appendix-end" name="appendix-end" required>
+              </div>
+              <div class="field">
+                <label for="appendix-description">Description</label>
+                <input type="text" id="appendix-description" name="appendix-description" placeholder="Description rapide">
+              </div>
+              <button type="submit" class="primary-button">Ajouter appendix</button>
+              <p class="form-message" id="appendix-message" role="status"></p>
+            </form>
+          </article>
+          <article class="card card--panel">
+            <h3>Lignes de contrat</h3>
+            <div class="table" id="lines-table"></div>
+            <form class="inline-form" id="line-form">
+              <div class="field">
+                <label for="line-appendix">Appendix</label>
+                <select id="line-appendix" name="line-appendix"></select>
+              </div>
+              <div class="field">
+                <label for="line-product">Produit</label>
+                <select id="line-product" name="line-product"></select>
+              </div>
+              <div class="field">
+                <label for="line-status">Statut</label>
+                <select id="line-status" name="line-status">
+                  <option value="draft">draft</option>
+                  <option value="active">active</option>
+                  <option value="deprecated">deprecated</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="line-start">Date début</label>
+                <input type="date" id="line-start" name="line-start" required>
+              </div>
+              <div class="field">
+                <label for="line-end">Date fin</label>
+                <input type="date" id="line-end" name="line-end" required>
+              </div>
+              <div class="field">
+                <label for="line-rule">Départ garantie</label>
+                <select id="line-rule" name="line-rule">
+                  <option value="purchase_date">purchase_date</option>
+                  <option value="activation_date">activation_date</option>
+                  <option value="manufacture_date">manufacture_date</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="line-months">Durée garantie (mois)</label>
+                <input type="number" id="line-months" name="line-months" value="24" required>
+              </div>
+              <div class="field">
+                <label for="line-serial">Numéro de série requis</label>
+                <select id="line-serial" name="line-serial">
+                  <option value="true">Oui</option>
+                  <option value="false">Non</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="line-serial-pattern">Format série (regex)</label>
+                <input type="text" id="line-serial-pattern" name="line-serial-pattern" placeholder="^SAV-\\d{4}-\\d{3}$">
+              </div>
+              <div class="field">
+                <label for="line-proof">Preuve d'achat</label>
+                <select id="line-proof" name="line-proof">
+                  <option value="true">Oui</option>
+                  <option value="false">Non</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="line-countries">Pays autorisés</label>
+                <input type="text" id="line-countries" name="line-countries" placeholder="FR, BE, ES">
+              </div>
+              <div class="field">
+                <label for="line-channels">Canaux autorisés</label>
+                <input type="text" id="line-channels" name="line-channels" placeholder="retail, online">
+              </div>
+              <div class="field">
+                <label for="line-options">Options SAV</label>
+                <div class="option-grid" id="line-options">
+                  <label><input type="checkbox" name="options" value="repair_station" checked> Station agréée</label>
+                  <label><input type="checkbox" name="options" value="parts_shipment"> Envoi pièces</label>
+                  <label><input type="checkbox" name="options" value="refund"> Remboursement</label>
+                  <label><input type="checkbox" name="options" value="replacement"> Remplacement</label>
+                  <label><input type="checkbox" name="options" value="paid_repair"> Réparation payante</label>
+                  <label><input type="checkbox" name="options" value="parts_sale"> Vente pièces</label>
+                </div>
+              </div>
+              <button type="submit" class="primary-button">Ajouter ligne</button>
+              <p class="form-message" id="line-message" role="status"></p>
+            </form>
           </article>
         </div>
       </section>

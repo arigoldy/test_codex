@@ -164,6 +164,44 @@ const elements = {
   outputOptions: document.getElementById('output-options'),
   outputReasons: document.getElementById('output-reasons'),
   navLinks: document.querySelectorAll('.nav-link'),
+  contractsTable: document.getElementById('contracts-table'),
+  appendicesTable: document.getElementById('appendices-table'),
+  linesTable: document.getElementById('lines-table'),
+  contractForm: document.getElementById('contract-form'),
+  appendixForm: document.getElementById('appendix-form'),
+  lineForm: document.getElementById('line-form'),
+  contractMessage: document.getElementById('contract-message'),
+  appendixMessage: document.getElementById('appendix-message'),
+  lineMessage: document.getElementById('line-message'),
+  contractClient: document.getElementById('contract-client'),
+  contractReference: document.getElementById('contract-reference'),
+  contractStatus: document.getElementById('contract-status'),
+  contractStart: document.getElementById('contract-start'),
+  contractEnd: document.getElementById('contract-end'),
+  contractRate: document.getElementById('contract-rate'),
+  contractBilling: document.getElementById('contract-billing'),
+  contractCurrency: document.getElementById('contract-currency'),
+  contractNotes: document.getElementById('contract-notes'),
+  appendixContract: document.getElementById('appendix-contract'),
+  appendixName: document.getElementById('appendix-name'),
+  appendixCode: document.getElementById('appendix-code'),
+  appendixStatus: document.getElementById('appendix-status'),
+  appendixStart: document.getElementById('appendix-start'),
+  appendixEnd: document.getElementById('appendix-end'),
+  appendixDescription: document.getElementById('appendix-description'),
+  lineAppendix: document.getElementById('line-appendix'),
+  lineProduct: document.getElementById('line-product'),
+  lineStatus: document.getElementById('line-status'),
+  lineStart: document.getElementById('line-start'),
+  lineEnd: document.getElementById('line-end'),
+  lineRule: document.getElementById('line-rule'),
+  lineMonths: document.getElementById('line-months'),
+  lineSerial: document.getElementById('line-serial'),
+  lineSerialPattern: document.getElementById('line-serial-pattern'),
+  lineProof: document.getElementById('line-proof'),
+  lineCountries: document.getElementById('line-countries'),
+  lineChannels: document.getElementById('line-channels'),
+  lineOptions: document.querySelectorAll('#line-options input[type="checkbox"]'),
 };
 
 const formatBoolean = (value) => {
@@ -191,6 +229,33 @@ const addTag = (container, text) => {
   tag.className = 'tag';
   tag.textContent = text;
   container.appendChild(tag);
+};
+
+const setMessage = (element, message, type) => {
+  element.textContent = message;
+  element.classList.remove('is-error', 'is-success');
+  if (type) {
+    element.classList.add(type === 'error' ? 'is-error' : 'is-success');
+  }
+};
+
+const createTableRow = (values, isHeader = false) => {
+  const row = document.createElement('div');
+  row.className = `table__row${isHeader ? ' table__row--header' : ''}`;
+  values.forEach((value) => {
+    const cell = document.createElement('div');
+    cell.textContent = value;
+    row.appendChild(cell);
+  });
+  return row;
+};
+
+const getNextId = (items, prefix) => {
+  const numbers = items
+    .map((item) => Number(item.id.replace(prefix, '')))
+    .filter((value) => !Number.isNaN(value));
+  const next = numbers.length ? Math.max(...numbers) + 1 : 1;
+  return `${prefix}${String(next).padStart(2, '0')}`;
 };
 
 const findContract = (id) => dataStore.contracts.find((contract) => contract.id === id);
@@ -392,34 +457,35 @@ const fillSelect = (select, options, defaultValue) => {
   }
 };
 
+const updateSelectors = () => {
+  const contractOptions = dataStore.contracts.map((contract) => ({
+    value: contract.id,
+    label: `${contract.reference} (${contract.status})`,
+  }));
+  const appendixOptions = dataStore.appendices.map((appendix) => ({
+    value: appendix.id,
+    label: `${appendix.name} (${appendix.code})`,
+  }));
+  const productOptions = dataStore.products.map((product) => ({
+    value: product.id,
+    label: `${product.name} (${product.id})`,
+  }));
+
+  const keepValue = (select, options) => {
+    const current = select.value;
+    fillSelect(select, options, current && options.some((item) => item.value === current) ? current : options[0]?.value);
+  };
+
+  keepValue(elements.contract, contractOptions);
+  keepValue(elements.appendix, appendixOptions);
+  keepValue(elements.product, productOptions);
+  keepValue(elements.appendixContract, contractOptions);
+  keepValue(elements.lineAppendix, appendixOptions);
+  keepValue(elements.lineProduct, productOptions);
+};
+
 const initSelectors = () => {
-  fillSelect(
-    elements.contract,
-    dataStore.contracts.map((contract) => ({
-      value: contract.id,
-      label: `${contract.reference} (${contract.status})`,
-    })),
-    dataStore.contracts[0]?.id,
-  );
-
-  fillSelect(
-    elements.appendix,
-    dataStore.appendices.map((appendix) => ({
-      value: appendix.id,
-      label: `${appendix.name} (${appendix.code})`,
-    })),
-    dataStore.appendices[0]?.id,
-  );
-
-  fillSelect(
-    elements.product,
-    dataStore.products.map((product) => ({
-      value: product.id,
-      label: `${product.name} (${product.id})`,
-    })),
-    dataStore.products[0]?.id,
-  );
-
+  updateSelectors();
   const today = new Date().toISOString().split('T')[0];
   elements.eventDate.value = today;
 };
@@ -436,6 +502,233 @@ const updateNavHighlight = () => {
   elements.navLinks.forEach((link) => {
     link.classList.toggle('is-active', link.getAttribute('href') === `#${activeId}`);
   });
+};
+
+const renderContracts = () => {
+  elements.contractsTable.innerHTML = '';
+  elements.contractsTable.appendChild(
+    createTableRow(['ID', 'Client', 'Référence', 'Statut', 'Début', 'Fin'], true),
+  );
+  dataStore.contracts.forEach((contract) => {
+    elements.contractsTable.appendChild(
+      createTableRow([
+        contract.id,
+        contract.clientId,
+        contract.reference,
+        contract.status,
+        formatDate(contract.startDate),
+        formatDate(contract.endDate),
+      ]),
+    );
+  });
+};
+
+const renderAppendices = () => {
+  elements.appendicesTable.innerHTML = '';
+  elements.appendicesTable.appendChild(
+    createTableRow(['ID', 'Contrat', 'Nom', 'Statut', 'Début', 'Fin'], true),
+  );
+  dataStore.appendices.forEach((appendix) => {
+    elements.appendicesTable.appendChild(
+      createTableRow([
+        appendix.id,
+        appendix.contractId,
+        appendix.name,
+        appendix.status,
+        formatDate(appendix.startDate),
+        formatDate(appendix.endDate),
+      ]),
+    );
+  });
+};
+
+const renderLines = () => {
+  elements.linesTable.innerHTML = '';
+  elements.linesTable.appendChild(
+    createTableRow(['ID', 'Appendix', 'Produit', 'Statut', 'Début', 'Fin'], true),
+  );
+  dataStore.lines.forEach((line) => {
+    elements.linesTable.appendChild(
+      createTableRow([
+        line.id,
+        line.appendixId,
+        line.productId,
+        line.status,
+        formatDate(line.startDate),
+        formatDate(line.endDate),
+      ]),
+    );
+  });
+};
+
+const refreshManagementView = () => {
+  renderContracts();
+  renderAppendices();
+  renderLines();
+  updateSelectors();
+};
+
+const parseList = (value) =>
+  value
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+const isValidDateRange = (start, end) => new Date(start) <= new Date(end);
+
+const handleContractSubmit = (event) => {
+  event.preventDefault();
+  const clientId = elements.contractClient.value.trim();
+  const reference = elements.contractReference.value.trim();
+  const startDate = elements.contractStart.value;
+  const endDate = elements.contractEnd.value;
+
+  if (!clientId || !reference) {
+    setMessage(elements.contractMessage, 'Client et référence obligatoires.', 'error');
+    return;
+  }
+
+  if (!isValidDateRange(startDate, endDate)) {
+    setMessage(elements.contractMessage, 'Dates invalides : début après la fin.', 'error');
+    return;
+  }
+
+  const duplicate = dataStore.contracts.some(
+    (contract) => contract.clientId === clientId && contract.reference === reference,
+  );
+  if (duplicate) {
+    setMessage(elements.contractMessage, 'Référence déjà utilisée pour ce client.', 'error');
+    return;
+  }
+
+  dataStore.contracts.push({
+    id: getNextId(dataStore.contracts, 'CTR-'),
+    clientId,
+    reference,
+    status: elements.contractStatus.value,
+    startDate,
+    endDate,
+    billingRatePercent: Number(elements.contractRate.value),
+    billingBase: elements.contractBilling.value,
+    currency: elements.contractCurrency.value.trim() || 'EUR',
+    notes: elements.contractNotes.value.trim(),
+  });
+
+  elements.contractForm.reset();
+  setMessage(elements.contractMessage, 'Contrat ajouté.', 'success');
+  refreshManagementView();
+};
+
+const handleAppendixSubmit = (event) => {
+  event.preventDefault();
+  const contractId = elements.appendixContract.value;
+  const name = elements.appendixName.value.trim();
+  const code = elements.appendixCode.value.trim();
+  const startDate = elements.appendixStart.value;
+  const endDate = elements.appendixEnd.value;
+  const contract = findContract(contractId);
+
+  if (!contract) {
+    setMessage(elements.appendixMessage, 'Contrat introuvable.', 'error');
+    return;
+  }
+
+  if (!name || !code) {
+    setMessage(elements.appendixMessage, 'Nom et code obligatoires.', 'error');
+    return;
+  }
+
+  if (!isValidDateRange(startDate, endDate)) {
+    setMessage(elements.appendixMessage, 'Dates invalides : début après la fin.', 'error');
+    return;
+  }
+
+  const withinContract =
+    new Date(startDate) >= new Date(contract.startDate) && new Date(endDate) <= new Date(contract.endDate);
+  if (!withinContract) {
+    setMessage(elements.appendixMessage, 'Dates hors de la période du contrat.', 'error');
+    return;
+  }
+
+  dataStore.appendices.push({
+    id: getNextId(dataStore.appendices, 'APP-'),
+    contractId,
+    name,
+    code,
+    status: elements.appendixStatus.value,
+    startDate,
+    endDate,
+    description: elements.appendixDescription.value.trim(),
+  });
+
+  elements.appendixForm.reset();
+  setMessage(elements.appendixMessage, 'Appendix ajouté.', 'success');
+  refreshManagementView();
+};
+
+const handleLineSubmit = (event) => {
+  event.preventDefault();
+  const appendixId = elements.lineAppendix.value;
+  const productId = elements.lineProduct.value;
+  const startDate = elements.lineStart.value;
+  const endDate = elements.lineEnd.value;
+  const appendix = findAppendix(appendixId);
+  const contract = appendix ? findContract(appendix.contractId) : null;
+
+  if (!appendix || !contract) {
+    setMessage(elements.lineMessage, 'Appendix ou contrat introuvable.', 'error');
+    return;
+  }
+
+  if (!isValidDateRange(startDate, endDate)) {
+    setMessage(elements.lineMessage, 'Dates invalides : début après la fin.', 'error');
+    return;
+  }
+
+  const withinAppendix =
+    new Date(startDate) >= new Date(appendix.startDate) && new Date(endDate) <= new Date(appendix.endDate);
+  const withinContract =
+    new Date(startDate) >= new Date(contract.startDate) && new Date(endDate) <= new Date(contract.endDate);
+  if (!withinAppendix || !withinContract) {
+    setMessage(elements.lineMessage, 'Dates hors de la période de l’appendix ou du contrat.', 'error');
+    return;
+  }
+
+  const productExists = dataStore.products.some((product) => product.id === productId);
+  if (!productExists) {
+    setMessage(elements.lineMessage, 'Produit invalide.', 'error');
+    return;
+  }
+
+  const selectedOptions = Array.from(elements.lineOptions)
+    .filter((option) => option.checked)
+    .map((option) => option.value);
+
+  dataStore.lines.push({
+    id: getNextId(dataStore.lines, 'LINE-'),
+    appendixId,
+    productId,
+    status: elements.lineStatus.value,
+    startDate,
+    endDate,
+    serialRequired: elements.lineSerial.value === 'true',
+    serialPattern: elements.lineSerialPattern.value.trim() || null,
+    warrantyStartRule: elements.lineRule.value,
+    warrantyMonths: Number(elements.lineMonths.value),
+    proofRequired: elements.lineProof.value === 'true',
+    allowedCountries: parseList(elements.lineCountries.value).map((value) => value.toUpperCase()),
+    allowedChannels: parseList(elements.lineChannels.value).map((value) => value.toLowerCase()),
+    allowRepairStation: selectedOptions.includes('repair_station'),
+    allowPartsShipment: selectedOptions.includes('parts_shipment'),
+    allowRefund: selectedOptions.includes('refund'),
+    allowReplacement: selectedOptions.includes('replacement'),
+    allowPaidRepair: selectedOptions.includes('paid_repair'),
+    allowPartsSale: selectedOptions.includes('parts_sale'),
+  });
+
+  elements.lineForm.reset();
+  setMessage(elements.lineMessage, 'Ligne ajoutée.', 'success');
+  refreshManagementView();
 };
 
 const renderDecision = (result) => {
@@ -501,11 +794,15 @@ const handleScopeChange = () => {
 };
 
 initSelectors();
+refreshManagementView();
 handleScopeChange();
 
 window.addEventListener('scroll', updateNavHighlight);
 elements.scope.addEventListener('change', handleScopeChange);
 elements.form.addEventListener('submit', handleDecisionSubmit);
+elements.contractForm.addEventListener('submit', handleContractSubmit);
+elements.appendixForm.addEventListener('submit', handleAppendixSubmit);
+elements.lineForm.addEventListener('submit', handleLineSubmit);
 
 const initialResult = computeDecision({
   contractId: elements.contract.value,
