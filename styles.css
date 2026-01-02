@@ -167,6 +167,12 @@ body {
   color: var(--text);
 }
 
+.card--panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .card h3 {
   margin-top: 0;
 }
@@ -202,6 +208,11 @@ body {
   gap: 1rem;
 }
 
+.inline-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
 .field {
   display: flex;
   flex-direction: column;
@@ -219,6 +230,54 @@ body {
   border: 1px solid #cbd5f5;
   background: #fff;
   font-family: inherit;
+}
+
+.option-grid {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.option-grid label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.table {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.table__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.table__row--header {
+  background: #e0e7ff;
+  font-weight: 600;
+  color: #1e3a8a;
+  border-color: #c7d2fe;
+}
+
+.form-message {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.form-message.is-error {
+  color: #dc2626;
+}
+
+.form-message.is-success {
+  color: #16a34a;
 }
 
 .primary-button {
